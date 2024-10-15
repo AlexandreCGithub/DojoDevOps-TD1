@@ -55,6 +55,11 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
     return acc + values[itemName].kcal;
   }, 0);
 
+  // Nouvelle fonction pour réinitialiser les valeurs
+  const resetValues = () => {
+    setValues({});
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.calculatorContainer}>
@@ -78,8 +83,19 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
             </div>
           </div>
           <div className={classes.buttonContainer}>
-            <Button variant="contained" onClick={sendData(result)}>
+            {/* Bouton pour envoyer les données */}
+            <Button variant="contained" onClick={() => sendData(result)}>
               {result} Kcal
+            </Button>
+
+            {/* Nouveau bouton Reset */}
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={resetValues}
+              style={{ marginLeft: "10px" }} // Optionnel : ajout d'un espacement
+            >
+              Reset
             </Button>
           </div>
         </div>
